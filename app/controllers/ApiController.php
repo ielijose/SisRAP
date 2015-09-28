@@ -52,13 +52,15 @@ class ApiController extends BaseController {
 		$d = Indicador::where('key', 'd')->first()->clientes_web;
 
 		$tour->items->each(function($i) use (&$pre, &$post){
-			if($i->tipo == 0){ //pre
+			//echo $i->tipo ."<br>";
+
+			if($i->tipo == 1){ //operacion
 				$pre['1'] = $pre['1'] + $i->cant_1;
 				$pre['2'] = $pre['2'] + $i->cant_2;
 				$pre['3'] = $pre['3'] + $i->cant_3;
 				$pre['4'] = $pre['4'] + $i->cant_4;
 				$pre['5'] = $pre['5'] + $i->cant_5;
-			}else if($i->tipo == 1){ //post
+			}else if($i->tipo == 2){ //hotel
 				$post['1'] = $post['1'] + $i->cant_1;
 				$post['2'] = $post['2'] + $i->cant_2;
 				$post['3'] = $post['3'] + $i->cant_3;
