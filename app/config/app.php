@@ -78,7 +78,7 @@ return array(
 	|
 	*/
 
-	'key' => 'YourSecretKey!!!',
+	'key' => 'UKGtHSY12ttffl7NdhXAlCmRfzMAMNJa',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -120,6 +120,7 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		'Codesleeve\Social\SocialServiceProvider',
+		'Toddish\Verify\VerifyServiceProvider',
 
 	),
 
