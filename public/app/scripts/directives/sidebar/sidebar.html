@@ -1,0 +1,58 @@
+<div class="navbar-default sidebar" role="navigation">
+    <div class="sidebar-nav navbar-collapse">
+        <ul class="nav in" id="side-menu">
+
+            <li class="sidebar-search">
+                <div class="input-group custom-search-form">
+                    <input type="text" class="form-control" placeholder="Buscar..." ng-model="search">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                </div>
+            </li>
+
+            <li ui-sref-active="active" ng-repeat="tour in filtered = (tours | filter:search | orderBy:'-count')">
+                <a ui-sref="cotizador.tour({id: tour.id})"><i class="fa fa-map fa-fw"></i> {{ tour.nombre }}</a>
+            </li>
+
+            <li ng-if="filtered.length == 0">
+                <a href="#">No hay resultados para la busqueda</a>
+            </li>
+
+
+
+           <!-- <li ng-class="{active: collapseVar==1}">{{dropDown}}
+                <a href="" ng-click="check(1)"><i class="fa fa-map-marker fa-fw"></i> Bogota<span
+                        class="fa arrow"></span></a>
+                <ul class="nav nav-second-level" collapse="collapseVar!=1">
+                    <li ui-sref-active="active">
+                        <a ui-sref="cotizador.p">Paquete #1</a>
+                    </li>
+                    <li ui-sref-active="active">
+                        <a ui-sref="cotizador.p">Paquete #2</a>
+                    </li>
+                </ul>
+                 /.nav-second-level ->
+            </li>
+            <li ng-class="{active: collapseVar==2}">
+                <a href="" ng-click="check(2)"><i class="fa fa-map-marker fa-fw"></i> Medellín<span
+                        class="fa arrow"></span></a>
+                <ul class="nav nav-second-level" collapse="collapseVar!=2">
+                    <li ui-sref-active="active">
+                        <a ui-sref="cotizador.p">Paquete #1</a>
+                    </li>
+                    <li ui-sref-active="active">
+                        <a ui-sref="cotizador.p">Paquete #2</a>
+                    </li>
+                </ul>
+                /.nav-second-level -->
+            </li>
+        </ul>
+    </div>
+    <!-- /.sidebar-collapse -->
+</div>
+
+
+
