@@ -44,15 +44,43 @@ class ApiController extends BaseController {
 		});
 		/* :Files */
 
+		$tour->role = Auth::user()->rol_id;
+
 		$pre = array('1' => 0, '2' => 0, '3' => 0, '4' => 0, '5' => 0);
 		$post = array('1' => 0, '2' => 0, '3' => 0, '4' => 0, '5' => 0);
 
-		$mo = Indicador::where('key', 'mo')->first()->clientes_web;
-		$mh = Indicador::where('key', 'mh')->first()->clientes_web;
-		$d = Indicador::where('key', 'd')->first()->clientes_web;
+
+		switch (Auth::user()->rol_id) {
+			case 4:
+				$mo = Indicador::where('key', 'mo')->first()->agencias;
+				$mh = Indicador::where('key', 'mh')->first()->agencias;
+				$d = Indicador::where('key', 'd')->first()->agencias;
+				break;
+
+			case 5:
+				$mo = Indicador::where('key', 'mo')->first()->mayoristas;
+				$mh = Indicador::where('key', 'mh')->first()->mayoristas;
+				$d = Indicador::where('key', 'd')->first()->mayoristas;
+				break;
+
+			case 6:
+				$mo = Indicador::where('key', 'mo')->first()->mayoristas_al;
+				$mh = Indicador::where('key', 'mh')->first()->mayoristas_al;
+				$d = Indicador::where('key', 'd')->first()->mayoristas_al;
+				break;
+
+			default:
+				$mo = Indicador::where('key', 'mo')->first()->clientes_web;
+				$mh = Indicador::where('key', 'mh')->first()->clientes_web;
+				$d = Indicador::where('key', 'd')->first()->clientes_web;
+				break;
+		}
+
+
+		//echo $mo ." - " . $mh. " - " .$d; exit;
+
 
 		$tour->items->each(function($i) use (&$pre, &$post){
-			//echo $i->tipo ."<br>";
 
 			if($i->tipo == 1){ //operacion
 				$pre['1'] = $pre['1'] + $i->cant_1;
@@ -66,34 +94,18 @@ class ApiController extends BaseController {
 				$post['3'] = $post['3'] + $i->cant_3;
 				$post['4'] = $post['4'] + $i->cant_4;
 				$post['5'] = $post['5'] + $i->cant_5;
+			}else{
+				dd($i);
 			}
+
+
 		});
 
-		// apply rates
-
-		$pre['1'] = $pre['1'] * $mo;
-		$pre['2'] = $pre['2'] * $mo;
-		$pre['3'] = $pre['3'] * $mo;
-		$pre['4'] = $pre['4'] * $mo;
-		$pre['5'] = $pre['5'] * $mo;
-
-
-
-		$post['1'] = $post['1'] * $mh;
-		$post['2'] = $post['2'] * $mh;
-		$post['3'] = $post['3'] * $mh;
-		$post['4'] = $post['4'] * $mh;
-		$post['5'] = $post['5'] * $mh;
-
 		// dolarize
-
 		$total = array();
-
-		$total['1'] = ($pre['1'] + $post['1']) / $d;
-		$total['2'] = ($pre['2'] + $post['2']) / $d;
-		$total['3'] = ($pre['3'] + $post['3']) / $d;
-		$total['4'] = ($pre['4'] + $post['4']) / $d;
-		$total['5'] = ($pre['5'] + $post['5']) / $d;
+		for ($i=1; $i <= 5; $i++) {
+			$total[$i] = (($pre[$i] * $mo) + ($post[$i] * $mh)) / $d;
+		}
 
 		// prices
 		$prices = array();
