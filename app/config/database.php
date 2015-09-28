@@ -55,9 +55,9 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'papayote',
+			'database'  => 'admincotizador',
 			'username'  => 'root',
-			'password'  => '',
+			'password'  => '2qvfebDgSl',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',

@@ -17,6 +17,7 @@ Route::get('/', array('before' => 'auth', 'uses' => 'HomeController@index'));
 
 Route::get('/login', 'HomeController@login');
 Route::post('/login', 'HomeController@postLogin');
+Route::get('/logout', 'HomeController@logout');
 
 require "routes/api.php";
 

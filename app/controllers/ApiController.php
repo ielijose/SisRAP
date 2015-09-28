@@ -2,6 +2,13 @@
 
 class ApiController extends BaseController {
 
+	public function user()
+	{
+		return json_encode(['username' => Auth::user()->nombre]);
+	}
+
+
+
 	public function getTours()
 	{
 		$tours = Tour::active()->with('items')->get();

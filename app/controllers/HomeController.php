@@ -49,13 +49,42 @@ class HomeController extends BaseController {
             );
             $remember = (Input::has('remember')) ? true : false;
 
-            if ($r = Auth::attempt($userdata, $remember)) {
+           /* if ($r = Auth::attempt($userdata, $remember)) {
                 return Redirect::to('/');
             } else {
                 return Redirect::to('/login')->with('alert', array('type' => 'danger', 'message' => 'Invalid credentials.'));
+            }*/
+
+            $message = "";
+
+            try {
+                if(Auth::attempt($userdata, Input::get('rememberme', false))) {
+                    return Redirect::to('/');
+                }
+            } catch( \Toddish\Verify\UserNotFoundException $e ) {
+                $message = _("User not found.");
+            } catch( \Toddish\Verify\UserUnverifiedException $e ) {
+                $message = _("User not verified.");
+            } catch( \Toddish\Verify\UserDisabledException $e ) {
+                $message = _("Disabled User.");
+            } catch( \Toddish\Verify\UserDeletedException $e ) {
+                $message = _("Deleted User.");
+            } catch( \Toddish\Verify\UserPasswordIncorrectException $e ) {
+                $message = _("Invalid credentials.");
             }
+
+
+            return Redirect::to('/login')->with('alert', array('type' => 'danger', 'message' => $message));
+
+
         }
 	}
+
+    public function logout()
+    {
+       Auth::logout();
+       return Redirect::to('/login')->with('alert', array('type' => 'success', 'message' => 'See you later.'));
+    }
 
 
 
