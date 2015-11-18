@@ -1,0 +1,117 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">
+            Nuevo Bautizo
+            <div class="pull-right">
+                <a ui-sref="dashboard.bautizos" class="btn btn-info"> <i class="fa fa-arrow-left"></i> Volver</a>
+            </div>
+        </h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                Registrar Bautizo
+            </div>
+            <div class="panel-body">
+                <form role="form" ng-submit="guardar()" anovalidate>
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <h3>Datos del Libro</h3>
+
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Libro" name="libro" ng-model="bautizo.libro" required>
+                                <p class="help-block hide">Example block-level help text here.</p>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Folio" name="folio" ng-model="bautizo.folio" required>
+                                <p class="help-block hide">Example block-level help text here.</p>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Numero" name="numero" ng-model="bautizo.numero" required>
+                                <p class="help-block hide">Example block-level help text here.</p>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Filiación" name="filiacion" ng-model="bautizo.filiacion" required>
+                                <p class="help-block hide">Example block-level help text here.</p>
+                            </div>
+                        </div>
+                        <!-- /.col-lg-4 (nested) -->
+                        <div class="col-lg-3">
+                            <h3>Datos del Bautizado </h3>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Nombre" name="persona" ng-model="bautizo.persona">
+                                <p class="help-block hide">Example block-level help text here.</p>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Padre" name="padre" ng-model="bautizo.padre">
+                                <p class="help-block hide">Example block-level help text here.</p>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Madre" name="madre" ng-model="bautizo.madre">
+                                <p class="help-block hide">Example block-level help text here.</p>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Lugar de nacimiento" name="lugar_nacimiento" ng-model="bautizo.lugar_nacimiento">
+                                <p class="help-block hide">Example block-level help text here.</p>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Fecha de nacimiento" name="fecha_nacimiento" ng-model="bautizo.fecha_nacimiento">
+                                <p class="help-block hide">Example block-level help text here.</p>
+                            </div>
+                        </div>
+                        <!-- /.col-lg-4 (nested) -->
+
+                        <div class="col-lg-3">
+                            <h3>Datos del Bautizo </h3>
+
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Fecha del bautizo" name="fecha_bautismo" ng-model="bautizo.fecha_bautismo">
+                                <p class="help-block hide">Example block-level help text here.</p>
+                            </div>
+
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Padrinos" name="padrinos" ng-model="bautizo.padrinos">
+                                <p class="help-block hide">Example block-level help text here.</p>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Ministro" name="ministro" ng-model="bautizo.ministro">
+                                <p class="help-block hide">Example block-level help text here.</p>
+                            </div>
+
+                        </div>
+                        <!-- /.col-lg-4 (nested) -->
+
+                        <div class="col-lg-3">
+                            <h3>Registro Civil </h3>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Numero" name="registro_civil_numero" ng-model="bautizo.registro_civil_numero">
+                                <p class="help-block hide">Example block-level help text here.</p>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Libro" name="registro_civil_libro" ng-model="bautizo.registro_civil_libro">
+                                <p class="help-block hide">Example block-level help text here.</p>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Año" name="registro_civil_ano" ng-model="bautizo.registro_civil_ano">
+                                <p class="help-block hide">Example block-level help text here.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-success btn-lg pull-right"> <i class="fa fa-save"></i> Guardar</button>
+                    <div class="clearfix"></div>
+
+                    <!-- /.row (nested) -->
+                </form>
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+    </div>
+    <!-- /.col-lg-12 -->
+</div>

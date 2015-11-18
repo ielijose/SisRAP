@@ -8,5 +8,12 @@ Route::group(array('prefix' => 'api'), function()
     Route::post('/cotizar', 'ApiController@postCotizar');
 
     Route::get('/user', 'ApiController@user');
+
+
+
+    /* BAUTIZOS */
+    /* ********************************************************************************************************************** */
+    Route::get('/bautizos', 'ApiController@getBautizos');
+    Route::post('/bautizo', 'ApiController@postBautizo');
 });
 

@@ -13,6 +13,7 @@ angular
     'ui.router',
     'ui.bootstrap',
     'angular-loading-bar',
+    'toastr'
   ])
   .config(['$stateProvider','$urlRouterProvider','$ocLazyLoadProvider',function ($stateProvider,$urlRouterProvider,$ocLazyLoadProvider) {
 
@@ -21,11 +22,11 @@ angular
       events:true,
     });
 
-    $urlRouterProvider.otherwise('/cotizador/home');
+    $urlRouterProvider.otherwise('/dashboard/home');
 
     $stateProvider
-      .state('cotizador', {
-        url:'/cotizador',
+      .state('dashboard', {
+        url:'/dashboard',
         templateUrl: '/app/views/dashboard/main.html',
         resolve: {
             loadMyDirectives:function($ocLazyLoad){
@@ -74,38 +75,58 @@ angular
             }
         }
     })
-      .state('cotizador.home',{
+      .state('dashboard.home',{
         url:'/home',
-        controller: 'TourCtrl',
-        templateUrl:'/app/views/tour.html',
+        controller: 'MainCtrl',
+        templateUrl:'/app/views/dashboard/home.html',
         resolve: {
           loadMyFiles:function($ocLazyLoad) {
             return $ocLazyLoad.load({
               name:'sbAdminApp',
               files:[
-              '/app/scripts/directives/dashboard/stats/stats.js',
-              '/app/scripts/controllers/tour.js'
+              '/app/scripts/controllers/main.js'
               ]
             })
           }
         }
       })
 
-      .state('cotizador.tour',{
-        templateUrl:'/app/views/tour.html',
-        url:'/tour/:id',
-        controller: 'TourCtrl',
+      .state('dashboard.bautizos',{
+        url:'/bautizos',
+        controller: 'BautizosController',
+        templateUrl:'/app/views/bautizos/index.html',
         resolve: {
           loadMyFiles:function($ocLazyLoad) {
             return $ocLazyLoad.load({
               name:'sbAdminApp',
               files:[
-              '/app/scripts/directives/dashboard/stats/stats.js',
-              '/app/scripts/controllers/tour.js'
+                '/app/scripts/controllers/bautizos.js'
               ]
             })
           }
         }
       })
 
-  }]);
+      .state('dashboard.bautizos-nuevo',{
+        url:'/bautizos/nuevo',
+        controller: 'NuevoBautizoController',
+        templateUrl:'/app/views/bautizos/nuevo.html',
+        resolve: {
+          loadMyFiles:function($ocLazyLoad) {
+            return $ocLazyLoad.load({
+              name:'sbAdminApp',
+              files:[
+                '/app/scripts/controllers/bautizos.js'
+              ]
+            })
+          }
+        }
+      })
+
+
+
+  }]).config(function(toastrConfig) {
+      angular.extend(toastrConfig, {
+        positionClass: 'toast-bottom-left'
+      });
+    });

@@ -139,7 +139,7 @@ background-color: #eee;
   font-size: 32px;
 }
 
-.page-header{
+.withoutmargin{
   margin: 0px;
 }
 
@@ -743,4 +743,8 @@ background-color: #eee;
   outline: none;
   -webkit-box-shadow: none;
   box-shadow: none;
+}
+
+.col-lg-4 .panel-heading{
+  font-size: 20px;
 }

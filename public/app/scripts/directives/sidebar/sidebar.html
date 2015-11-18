@@ -13,42 +13,18 @@
                 </div>
             </li>
 
-            <li ui-sref-active="active" ng-repeat="tour in filtered = (tours | filter:search | orderBy:'-count')">
-                <a ui-sref="cotizador.tour({id: tour.id})"><i class="fa fa-map fa-fw"></i> {{ tour.nombre }}</a>
-            </li>
+            <li ui-sref-active="active"> <a ui-sref="dashboard.home"><i class="fa fa-dashboard fa-fw"></i> Escritorio</a> </li>
 
-            <li ng-if="filtered.length == 0">
-                <a href="#">No hay resultados para la busqueda</a>
-            </li>
+            <li ui-sref-active="active"> <a ui-sref="dashboard.bautizos"><i class="fa fa-file-o fa-fw"></i> Bautizos</a> </li>
 
+            <li ui-sref-active="active"> <a ui-sref="dashboard.custom"><i class="fa fa-file-o fa-fw"></i> Comuniones</a> </li>
 
+            <li ui-sref-active="active"> <a ui-sref="dashboard.custom"><i class="fa fa-file-o fa-fw"></i> Confirmaciones</a> </li>
 
-           <!-- <li ng-class="{active: collapseVar==1}">{{dropDown}}
-                <a href="" ng-click="check(1)"><i class="fa fa-map-marker fa-fw"></i> Bogota<span
-                        class="fa arrow"></span></a>
-                <ul class="nav nav-second-level" collapse="collapseVar!=1">
-                    <li ui-sref-active="active">
-                        <a ui-sref="cotizador.p">Paquete #1</a>
-                    </li>
-                    <li ui-sref-active="active">
-                        <a ui-sref="cotizador.p">Paquete #2</a>
-                    </li>
-                </ul>
-                 /.nav-second-level ->
-            </li>
-            <li ng-class="{active: collapseVar==2}">
-                <a href="" ng-click="check(2)"><i class="fa fa-map-marker fa-fw"></i> Medellín<span
-                        class="fa arrow"></span></a>
-                <ul class="nav nav-second-level" collapse="collapseVar!=2">
-                    <li ui-sref-active="active">
-                        <a ui-sref="cotizador.p">Paquete #1</a>
-                    </li>
-                    <li ui-sref-active="active">
-                        <a ui-sref="cotizador.p">Paquete #2</a>
-                    </li>
-                </ul>
-                /.nav-second-level -->
-            </li>
+            <li ui-sref-active="active"> <a ui-sref="dashboard.custom"><i class="fa fa-file-o fa-fw"></i> Matrimonios</a> </li>
+
+            <li ui-sref-active="active"> <a ui-sref="dashboard.custom"><i class="fa fa-file-o fa-fw"></i> Defunciones</a> </li>
+
         </ul>
     </div>
     <!-- /.sidebar-collapse -->

@@ -8,7 +8,7 @@ return array(
         'mysql' => array(
             'driver'    => 'mysql',
             'host'      => 'localhost',
-            'database'  => 'papayote',
+            'database'  => 'sisrap',
             'username'  => 'root',
             'password'  => '',
             'charset'   => 'utf8',

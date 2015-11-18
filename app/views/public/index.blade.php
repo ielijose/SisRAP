@@ -2,7 +2,7 @@
 <html class="no-js">
   <head>
     <meta charset="utf-8">
-    <title>Cotizador - Papayote.com</title>
+    <title>SisRAP</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -21,6 +21,14 @@
     <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.min.css" type="text/css">
     <!-- endbuild -->
 
+    <!-- DataTables CSS -->
+    <link href="/bower_components\datatables-plugins\integration\bootstrap\3\dataTables.bootstrap.css" rel="stylesheet">
+
+    <!-- DataTables Responsive CSS -->
+    <link href="/app/styles/dataTables.responsive.css" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="/bower_components/angular-toastr/dist/angular-toastr.css" />
+
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
     <script src="/bower_components/jquery/dist/jquery.min.js"></script>
@@ -33,6 +41,7 @@
     <script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
     <script src="/bower_components/metisMenu/dist/metisMenu.min.js"></script>
     <script src="/bower_components/Chart.js/Chart.min.js"></script>
+    <script src="/bower_components/angular-toastr/dist/angular-toastr.tpls.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -48,6 +57,9 @@
     <!-- Morris Charts CSS -->
     <!-- <link href="styles/morrisjs/morris.css" rel="stylesheet"> -->
 
+    <!-- DataTables JavaScript -->
+    <script src="/bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
+    <script src="/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
 
     </head>
 

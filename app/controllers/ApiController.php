@@ -7,18 +7,30 @@ class ApiController extends BaseController {
 		return json_encode(['username' => Auth::user()->nombre]);
 	}
 
-
-
-	public function getTours()
+	/* BAUTIZOS */
+	/* ********************************************************************************************************************** */
+	public function getBautizos()
 	{
-		$tours = Tour::active()->with('items')->get();
-
-		$tours->each(function($t) use (&$tours){
-			$t->count = Cotizacion::where('tour_id', $t->id)->count();
-		});
-
-		return $tours->toJson();
+		$bautizos = Bautizo::all();
+		return $bautizos->toJson();
 	}
+
+	public function postBautizo()
+	{
+		$inputs = Input::all();
+
+		$bautizo = new Bautizo($inputs);
+
+		if($bautizo->save()){
+			$bautizo->error = false;
+			return $bautizo->toJson();
+		}else{
+			return json_encode(array('error' => true));
+		}
+
+	}
+
+
 
 	public function getTour($id = false)
 	{
