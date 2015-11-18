@@ -44,24 +44,24 @@
                         <div class="col-lg-3">
                             <h3>Datos del Bautizado </h3>
                             <div class="form-group">
-                                <input class="form-control" placeholder="Nombre" name="persona" ng-model="bautizo.persona">
+                                <input class="form-control" placeholder="Nombre" name="persona" ng-model="bautizo.persona" required>
                                 <p class="help-block hide">Example block-level help text here.</p>
                             </div>
                             <div class="form-group">
-                                <input class="form-control" placeholder="Padre" name="padre" ng-model="bautizo.padre">
+                                <input class="form-control" placeholder="Padre" name="padre" ng-model="bautizo.padre" required>
                                 <p class="help-block hide">Example block-level help text here.</p>
                             </div>
                             <div class="form-group">
-                                <input class="form-control" placeholder="Madre" name="madre" ng-model="bautizo.madre">
+                                <input class="form-control" placeholder="Madre" name="madre" ng-model="bautizo.madre" required>
                                 <p class="help-block hide">Example block-level help text here.</p>
                             </div>
                             <div class="form-group">
-                                <input class="form-control" placeholder="Lugar de nacimiento" name="lugar_nacimiento" ng-model="bautizo.lugar_nacimiento">
+                                <input class="form-control" placeholder="Lugar de nacimiento" name="lugar_nacimiento" ng-model="bautizo.lugar_nacimiento" required>
                                 <p class="help-block hide">Example block-level help text here.</p>
                             </div>
                             <div class="form-group">
-                                <input class="form-control" placeholder="Fecha de nacimiento" name="fecha_nacimiento" ng-model="bautizo.fecha_nacimiento">
-                                <p class="help-block hide">Example block-level help text here.</p>
+                                <p class="help-block">Fecha de nacimiento.</p>
+                                <input class="form-control" type="date" placeholder="Fecha de nacimiento" name="fecha_nacimiento" ng-model="bautizo.fecha_nacimiento" required>
                             </div>
                         </div>
                         <!-- /.col-lg-4 (nested) -->
