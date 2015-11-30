@@ -121,6 +121,7 @@ return array(
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		'Codesleeve\Social\SocialServiceProvider',
 		'Toddish\Verify\VerifyServiceProvider',
+		'Thujohn\Pdf\PdfServiceProvider',
 
 	),
 
@@ -189,6 +190,7 @@ return array(
 		'View'            => 'Illuminate\Support\Facades\View',
 		'Social'		  => 'Codesleeve\Social\Social',
 		'Uuid' 			  => 'Webpatser\Uuid\Uuid',
+		'PDF' => 'Thujohn\Pdf\PdfFacade',
 
 	),
 

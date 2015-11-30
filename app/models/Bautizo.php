@@ -6,7 +6,7 @@ class Bautizo extends Eloquent {
     public $timestamps = true;
     protected $guarded = array();
 
-    //protected $fillable = array('nombre');
+    protected $fillable = array('libro', 'folio', 'numero', 'filiacion', 'persona', 'padre', 'madre', 'lugar_nacimiento', 'fecha_nacimiento', 'fecha_bautismo', 'padrinos', 'ministro', 'registro_civil_numero', 'registro_civil_libro', 'registro_civil_ano');
 
     /* Functions */
 

@@ -7,6 +7,19 @@ class ApiController extends BaseController {
 		return json_encode(['username' => Auth::user()->nombre]);
 	}
 
+	public function charts()
+	{
+		$bautizos = Bautizo::count();
+		$comuniones = Comunion::count();
+		$confirmaciones = Confirmacion::count();
+
+		return json_encode([
+			'bautizos' => $bautizos,
+			'comuniones' => $comuniones,
+			'confirmaciones' => $confirmaciones,
+		]);
+	}
+
 	/* BAUTIZOS */
 	/* ********************************************************************************************************************** */
 	public function getBautizos()
@@ -31,131 +44,135 @@ class ApiController extends BaseController {
 	}
 
 
-
-	public function getTour($id = false)
+	public function getBautizo($id)
 	{
-		if($id){
-			$tour = Tour::where('id', $id)->with('items', 'files')->first();
-		}else{
-			$x = Cotizacion::select(DB::raw('count(*) as cantidad, tour_id'))->groupBy('tour_id')->orderBy('cantidad', 'desc')->first();
-
-			$tour = Tour::where('id', $x->tour_id)->with('items', 'files')->first();
+		$bautizo = Bautizo::find($id);
+		if($bautizo){
+			$bautizo->error = false;
+			return $bautizo->toJson();
 		}
 
-		/* Files */
-		$tour->image = '/app/images/1.jpg';
-
-		$tour->files->each(function($f) use (&$tour){
-			if($f->tipo == 1){ //image
-				$tour->image = '//admin.papayote.com/uploads/tours/' . $f->file;
-			}else if($f->tipo == 2){ //en
-				$tour->en = 'http://admin.papayote.com/uploads/tours/' . $f->file;
-			}else if($f->tipo == 3){ //es
-				$tour->es = 'http://admin.papayote.com/uploads/tours/' . $f->file;
-			}
-		});
-		/* :Files */
-
-		$tour->role = Auth::user()->rol_id;
-
-		$pre = array('1' => 0, '2' => 0, '3' => 0, '4' => 0, '5' => 0);
-		$post = array('1' => 0, '2' => 0, '3' => 0, '4' => 0, '5' => 0);
-
-
-		switch (Auth::user()->rol_id) {
-			case 4:
-				$mo = Indicador::where('key', 'mo')->first()->agencias;
-				$mh = Indicador::where('key', 'mh')->first()->agencias;
-				$d = Indicador::where('key', 'd')->first()->agencias;
-				break;
-
-			case 5:
-				$mo = Indicador::where('key', 'mo')->first()->mayoristas;
-				$mh = Indicador::where('key', 'mh')->first()->mayoristas;
-				$d = Indicador::where('key', 'd')->first()->mayoristas;
-				break;
-
-			case 6:
-				$mo = Indicador::where('key', 'mo')->first()->mayoristas_al;
-				$mh = Indicador::where('key', 'mh')->first()->mayoristas_al;
-				$d = Indicador::where('key', 'd')->first()->mayoristas_al;
-				break;
-
-			default:
-				$mo = Indicador::where('key', 'mo')->first()->clientes_web;
-				$mh = Indicador::where('key', 'mh')->first()->clientes_web;
-				$d = Indicador::where('key', 'd')->first()->clientes_web;
-				break;
-		}
-
-
-		//echo $mo ." - " . $mh. " - " .$d; exit;
-
-
-		$tour->items->each(function($i) use (&$pre, &$post){
-
-			if($i->tipo == 1){ //operacion
-				$pre['1'] = $pre['1'] + $i->cant_1;
-				$pre['2'] = $pre['2'] + $i->cant_2;
-				$pre['3'] = $pre['3'] + $i->cant_3;
-				$pre['4'] = $pre['4'] + $i->cant_4;
-				$pre['5'] = $pre['5'] + $i->cant_5;
-			}else if($i->tipo == 2){ //hotel
-				$post['1'] = $post['1'] + $i->cant_1;
-				$post['2'] = $post['2'] + $i->cant_2;
-				$post['3'] = $post['3'] + $i->cant_3;
-				$post['4'] = $post['4'] + $i->cant_4;
-				$post['5'] = $post['5'] + $i->cant_5;
-			}else{
-				dd($i);
-			}
-
-
-		});
-
-		// dolarize
-		$total = array();
-		for ($i=1; $i <= 5; $i++) {
-			$total[$i] = (($pre[$i] * $mo) + ($post[$i] * $mh)) / $d;
-		}
-
-		// prices
-		$prices = array();
-		$individual = array();
-
-		for ($i=2; $i <= 15; $i++) {
-			if($i == 2){
-				$prices[$i] = $total['2'] * $i;
-				$individual[$i] = $total['2'];
-			}else if($i == 3){
-				$prices[$i] = $total['3'] * $i;
-				$individual[$i] = $total['3'];
-			}else if(($i>=4) && ($i<=8)){
-				$prices[$i] = $total['4'] * $i;
-				$individual[$i] = $total['4'];
-			}else if($i >8){
-				$prices[$i] = $total['5'] * $i;
-				$individual[$i] = $total['5'];
-			}
-		}
-
-		$tour->prices = $prices;
-		$tour->individual = $individual;
-		unset($tour->items);
-
-		return $tour->toJson();
+		return json_encode(['error' => true, 'message' => 'No existe este bautizo.']);
 	}
 
-	public function postCotizar()
+	public function putBautizo($id)
 	{
 		$inputs = Input::all();
-		$inputs['ip'] = Request::getClientIp();
 
-		$cotizacion = new Cotizacion($inputs);
+		$bautizo = Bautizo::find($id);
+		$bautizo->fill($inputs);
+		$bautizo->fecha_nacimiento = date('d/m/Y', strtotime($inputs['fecha_nacimiento']));
 
-		if($cotizacion->save()){
-			$cotizacion->error = false;
-			return $cotizacion->toJson();
+		if($bautizo->save()){
+			$bautizo->error = false;
+			return $bautizo->toJson();
+		}else{
+			return json_encode(array('error' => true));
+		}
+
+	}
+
+
+	/* COMUNIONES */
+	/* ********************************************************************************************************************** */
+	public function getComuniones()
+	{
+		$comuniones = Comunion::all();
+		return $comuniones->toJson();
+	}
+
+	public function postComunion()
+	{
+		$inputs = Input::all();
+
+		$comunion = new Comunion($inputs);
+
+		if($comunion->save()){
+			$comunion->error = false;
+			return $comunion->toJson();
+		}else{
+			return json_encode(array('error' => true));
+		}
+
+	}
+
+
+	public function getComunion($id)
+	{
+		$comunion = Comunion::find($id);
+		if($comunion){
+			$comunion->error = false;
+			return $comunion->toJson();
+		}
+
+		return json_encode(['error' => true, 'message' => 'No existe esta Comunión.']);
+	}
+
+	public function putComunion($id)
+	{
+		$inputs = Input::all();
+		//dd($inputs);
+
+		$comunion = Comunion::find($id);
+		$comunion->fill($inputs);
+		//$comunion->fecha = date('d/m/Y', strtotime($inputs['fecha']));
+
+		if($comunion->save()){
+			$comunion->error = false;
+			return $comunion->toJson();
+		}else{
+			return json_encode(array('error' => true));
+		}
+
+	}
+
+	/* COMUNIONES */
+	/* ********************************************************************************************************************** */
+	public function getConfirmaciones()
+	{
+		$confirmaciones = Confirmacion::all();
+		return $confirmaciones->toJson();
+	}
+
+	public function postConfirmacion()
+	{
+		$inputs = Input::all();
+
+		$comunion = new Confirmacion($inputs);
+
+		if($comunion->save()){
+			$comunion->error = false;
+			return $comunion->toJson();
+		}else{
+			return json_encode(array('error' => true));
+		}
+
+	}
+
+
+	public function getConfirmacion($id)
+	{
+		$confirmacion = Confirmacion::find($id);
+		if($confirmacion){
+			$confirmacion->error = false;
+			return $confirmacion->toJson();
+		}
+
+		return json_encode(['error' => true, 'message' => 'No existe esta Confirmación.']);
+	}
+
+	public function putConfirmacion($id)
+	{
+		$inputs = Input::all();
+		//dd($inputs);
+
+		$comunion = Confirmacion::find($id);
+		$comunion->fill($inputs);
+		//$comunion->fecha = date('d/m/Y', strtotime($inputs['fecha']));
+
+		if($comunion->save()){
+			$comunion->error = false;
+			return $comunion->toJson();
 		}else{
 			return json_encode(array('error' => true));
 		}

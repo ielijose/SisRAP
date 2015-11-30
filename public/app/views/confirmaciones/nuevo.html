@@ -1,0 +1,81 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">
+            Nueva Confirmación
+            <div class="pull-right">
+                <a ui-sref="dashboard.confirmaciones" class="btn btn-info"> <i class="fa fa-arrow-left"></i> Volver</a>
+            </div>
+        </h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-green">
+            <div class="panel-heading">
+                Registrar Confirmación
+            </div>
+            <div class="panel-body">
+                <form role="form" ng-submit="guardar()" anovalidate>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <h3>Datos del Libro</h3>
+
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Libro" name="libro" ng-model="confirmacion.libro" required>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Folio" name="folio" ng-model="confirmacion.folio" required>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Numero" name="numero" ng-model="confirmacion.numero" required>
+                            </div>
+                        </div>
+                        <!-- /.col-lg-4 (nested) -->
+                        <div class="col-lg-4">
+                            <h3>Datos del Confirmando </h3>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Nombre" name="persona" ng-model="confirmacion.persona" required>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Padre" name="padre" ng-model="confirmacion.padre" required>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Madre" name="madre" ng-model="confirmacion.madre" required>
+                            </div>                        </div>
+                        <!-- /.col-lg-4 (nested) -->
+
+                        <div class="col-lg-4">
+                            <h3>Datos de la Confirmación </h3>
+
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Fecha del bautizo" name="fecha" ng-model="confirmacion.fecha">
+                            </div>
+
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Padrinos" name="padrino" ng-model="confirmacion.padrino">
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Ministro" name="ministro" ng-model="confirmacion.ministro">
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Obispo de:" name="ministro_de" ng-model="confirmacion.ministro_de">
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-success btn-lg pull-right"> <i class="fa fa-save"></i> Guardar</button>
+                    <div class="clearfix"></div>
+
+                    <!-- /.row (nested) -->
+                </form>
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+    </div>
+    <!-- /.col-lg-12 -->
+</div>

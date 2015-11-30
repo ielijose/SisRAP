@@ -11,18 +11,30 @@ class TablaConfirmaciones extends Migration {
 	 * @return void
 	 */
 	public function up()
-	{
-		//
-	}
+    {
+        Schema::create('confirmaciones', function($table)
+        {
+            $table->increments('id');
+            $table->string('libro');
+            $table->string('folio');
+            $table->string('numero');
 
-	/**
-	 * Reverse the migrations.
-	 *
-	 * @return void
-	 */
-	public function down()
-	{
-		//
-	}
+            $table->string('persona');
+            $table->string('padre');
+            $table->string('madre');
+
+            $table->string('fecha');
+            $table->string('padrino');
+            $table->string('ministro');
+            $table->string('ministro_de');
+
+            $table->timestamps();
+        });
+    }
+
+    public function down()
+    {
+        Schema::drop('confirmaciones');
+    }
 
 }

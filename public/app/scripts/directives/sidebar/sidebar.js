@@ -20,11 +20,6 @@ angular.module('sbAdminApp')
         $scope.collapseVar = 0;
         $scope.multiCollapseVar = 0;
 
-        $http.get('/api/tours')
-        .success(function(data) {
-          $scope.tours = data;
-        }) .error(function(data) {console.log('Error: ' + data); });
-
         $scope.check = function(x){
 
           if(x==$scope.collapseVar)

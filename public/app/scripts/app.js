@@ -97,12 +97,7 @@ angular
         templateUrl:'/app/views/bautizos/index.html',
         resolve: {
           loadMyFiles:function($ocLazyLoad) {
-            return $ocLazyLoad.load({
-              name:'sbAdminApp',
-              files:[
-                '/app/scripts/controllers/bautizos.js'
-              ]
-            })
+            return $ocLazyLoad.load({name:'sbAdminApp', files:['/app/scripts/controllers/bautizos.js'] })
           }
         }
       })
@@ -113,12 +108,121 @@ angular
         templateUrl:'/app/views/bautizos/nuevo.html',
         resolve: {
           loadMyFiles:function($ocLazyLoad) {
-            return $ocLazyLoad.load({
-              name:'sbAdminApp',
-              files:[
-                '/app/scripts/controllers/bautizos.js'
-              ]
-            })
+            return $ocLazyLoad.load({name:'sbAdminApp', files:['/app/scripts/controllers/bautizos.js'] })
+          }
+        }
+      })
+
+      .state('dashboard.bautizo',{
+        url:'/bautizo/:id',
+        controller: 'MostrarBautizoController',
+        templateUrl:'/app/views/bautizos/mostrar.html',
+        resolve: {
+          loadMyFiles:function($ocLazyLoad) {
+            return $ocLazyLoad.load({name:'sbAdminApp', files:['/app/scripts/controllers/bautizos.js'] })
+          }
+        }
+      })
+
+      .state('dashboard.bautizo-imprimir',{
+        url:'/bautizo-imprimir/:id',
+        controller: 'ImprimirBautizoController',
+        templateUrl:'/app/views/bautizos/imprimir.html',
+        resolve: {
+          loadMyFiles:function($ocLazyLoad) {
+            return $ocLazyLoad.load({name:'sbAdminApp', files:['/app/scripts/controllers/bautizos.js'] })
+          }
+        }
+      })
+
+
+      /* COMUNIONES */
+      .state('dashboard.comuniones',{
+        url:'/comuniones',
+        controller: 'ComunionesController',
+        templateUrl:'/app/views/comuniones/index.html',
+        resolve: {
+          loadMyFiles:function($ocLazyLoad) {
+            return $ocLazyLoad.load({name:'sbAdminApp', files:['/app/scripts/controllers/comuniones.js'] })
+          }
+        }
+      })
+
+      .state('dashboard.comuniones-nuevo',{
+        url:'/comuniones/nuevo',
+        controller: 'NuevaComunionController',
+        templateUrl:'/app/views/comuniones/nuevo.html',
+        resolve: {
+          loadMyFiles:function($ocLazyLoad) {
+            return $ocLazyLoad.load({name:'sbAdminApp', files:['/app/scripts/controllers/comuniones.js'] })
+          }
+        }
+      })
+
+      .state('dashboard.comunion',{
+        url:'/comunion/:id',
+        controller: 'MostrarComunionController',
+        templateUrl:'/app/views/comuniones/mostrar.html',
+        resolve: {
+          loadMyFiles:function($ocLazyLoad) {
+            return $ocLazyLoad.load({name:'sbAdminApp', files:['/app/scripts/controllers/comuniones.js'] })
+          }
+        }
+      })
+
+      .state('dashboard.comunion-imprimir',{
+        url:'/comunion-imprimir/:id',
+        controller: 'ImprimirComunionController',
+        templateUrl:'/app/views/comuniones/imprimir.html',
+        resolve: {
+          loadMyFiles:function($ocLazyLoad) {
+            return $ocLazyLoad.load({name:'sbAdminApp', files:['/app/scripts/controllers/comuniones.js'] })
+          }
+        }
+      })
+
+
+      /* CONFIRMACIONES */
+      .state('dashboard.confirmaciones',{
+        url:'/confirmaciones',
+        controller: 'ConfirmacionesController',
+        templateUrl:'/app/views/confirmaciones/index.html',
+        resolve: {
+          loadMyFiles:function($ocLazyLoad) {
+            return $ocLazyLoad.load({name:'sbAdminApp', files:['/app/scripts/controllers/confirmaciones.js'] })
+          }
+        }
+      })
+
+      .state('dashboard.confirmaciones-nuevo',{
+        url:'/confirmaciones/nuevo',
+        controller: 'NuevaConfirmacionController',
+        templateUrl:'/app/views/confirmaciones/nuevo.html',
+        resolve: {
+          loadMyFiles:function($ocLazyLoad) {
+            return $ocLazyLoad.load({name:'sbAdminApp', files:['/app/scripts/controllers/confirmaciones.js'] })
+          }
+        }
+      })
+
+      .state('dashboard.confirmacion',{
+        url:'/confirmacion/:id',
+        controller: 'MostrarConfirmacionController',
+        templateUrl:'/app/views/confirmaciones/mostrar.html',
+        resolve: {
+          loadMyFiles:function($ocLazyLoad) {
+            return $ocLazyLoad.load({name:'sbAdminApp', files:['/app/scripts/controllers/confirmaciones.js'] })
+          }
+        }
+      })
+
+      .state('dashboard.confirmacion-imprimir',{
+        url:'/confirmacion-imprimir/:id',
+        controller: 'ImprimirConfirmacionController',
+        templateUrl:'/app/views/confirmaciones/imprimir.html',
+        resolve: {
+          loadMyFiles:function($ocLazyLoad) {
+            return $ocLazyLoad.load({name:'sbAdminApp', files:['/app/scripts/controllers/confirmaciones.js'] })
           }
         }
       })
@@ -126,7 +230,7 @@ angular
 
 
   }]).config(function(toastrConfig) {
-      angular.extend(toastrConfig, {
-        positionClass: 'toast-bottom-left'
-      });
+    angular.extend(toastrConfig, {
+      positionClass: 'toast-bottom-left'
     });
+  });

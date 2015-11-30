@@ -3,7 +3,7 @@
 angular.module('sbAdminApp')
   .controller('CustomTourCtrl', function($scope, $position, $http, $stateParams, $sce) {
 
-    $scope.tour = {};
+    /*$scope.tour = {};
     $scope.cotizacion = {};
 
     $scope.cantidad = -1;
@@ -61,6 +61,6 @@ angular.module('sbAdminApp')
     $scope.back = function(){
       $scope.page = 'tour';
       $scope.showMessage = false;
-    }
+    }*/
 
   });

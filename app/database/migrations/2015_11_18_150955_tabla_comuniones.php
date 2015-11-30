@@ -11,18 +11,22 @@ class TablaComuniones extends Migration {
 	 * @return void
 	 */
 	public function up()
-	{
-		//
-	}
+    {
+        Schema::create('comuniones', function($table)
+        {
+            $table->increments('id');
 
-	/**
-	 * Reverse the migrations.
-	 *
-	 * @return void
-	 */
-	public function down()
-	{
-		//
-	}
+            $table->string('persona');
+            $table->date('fecha');
+            $table->string('ministro');
+
+            $table->timestamps();
+        });
+    }
+
+    public function down()
+    {
+        Schema::drop('comuniones');
+    }
 
 }

@@ -21,7 +21,6 @@ Route::get('/logout', 'HomeController@logout');
 
 require "routes/api.php";
 
-Route::get('/email', function(){
-    $cotizacion = Cotizacion::first();
-    return View::make('emails.cotizacion', compact('cotizacion'));
-});
+Route::any('/files/generate/bautizo', array('before' => 'auth', 'uses' => 'FilesController@acta_bautizo'));
+Route::any('/files/generate/comunion', array('before' => 'auth', 'uses' => 'FilesController@acta_comunion'));
+Route::any('/files/generate/confirmacion', array('before' => 'auth', 'uses' => 'FilesController@acta_confirmacion'));
