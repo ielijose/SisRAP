@@ -15,10 +15,12 @@ angular.module('sbAdminApp')
       replace: true,
       scope: {
       },
-      controller:function($scope, $http){
+      controller:function($scope, $http, $stateParams){
         $scope.selectedMenu = 'dashboard';
         $scope.collapseVar = 0;
         $scope.multiCollapseVar = 0;
+
+        $scope.search = $stateParams.q || '';
 
         $scope.check = function(x){
 

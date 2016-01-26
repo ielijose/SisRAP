@@ -25,6 +25,26 @@ class ApiController extends BaseController {
 		]);
 	}
 
+
+	public function search()
+	{
+		$query = Input::get('query');
+		$bautizos = Bautizo::where('persona','LIKE', '%'.$query.'%')->get();
+		$comuniones = Comunion::where('persona','LIKE', '%'.$query.'%')->get();
+		$confirmaciones = Confirmacion::where('persona','LIKE', '%'.$query.'%')->get();
+		$matrimonios = Matrimonio::where('esposo','LIKE', '%'.$query.'%')->orWhere('esposa','LIKE', '%'.$query.'%')->get();
+		$defunciones = Defuncion::where('difunto','LIKE', '%'.$query.'%')->get();
+
+
+		return json_encode([
+			'bautizos' => $bautizos,
+			'comuniones' => $comuniones,
+			'confirmaciones' => $confirmaciones,
+			'matrimonios' => $matrimonios,
+			'defunciones' => $defunciones,
+		]);
+	}
+
 	/* BAUTIZOS */
 	/* ********************************************************************************************************************** */
 	public function getBautizos()

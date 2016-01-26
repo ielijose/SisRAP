@@ -91,6 +91,22 @@ angular
         }
       })
 
+      .state('dashboard.search',{
+        url:'/search/:q',
+        controller: 'SearchCtrl',
+        templateUrl:'/app/views/dashboard/search.html',
+        resolve: {
+          loadMyFiles:function($ocLazyLoad) {
+            return $ocLazyLoad.load({
+              name:'sbAdminApp',
+              files:[
+              '/app/scripts/controllers/main.js'
+              ]
+            })
+          }
+        }
+      })
+
       .state('dashboard.bautizos',{
         url:'/bautizos',
         controller: 'BautizosController',

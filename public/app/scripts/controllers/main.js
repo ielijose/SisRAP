@@ -12,4 +12,16 @@ angular.module('sbAdminApp')
     $http.get('/api/charts').success(function(data) {
       $scope.data = data;
     }) .error(function(data) {console.log('Error: ' + data); });
-  });
+  })
+
+  .controller('SearchCtrl', function($scope,$position, $http, $stateParams) {
+    $scope.data = {};
+    $scope.query = $stateParams.q || '';
+
+    $http.post('/api/search', {query: $scope.query}).success(function(data) {
+      $scope.data = data;
+    }) .error(function(data) {console.log('Error: ' + data); });
+
+  })
+
+  ;

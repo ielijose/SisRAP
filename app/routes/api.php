@@ -4,6 +4,7 @@ Route::group(array('prefix' => 'api'), function()
 {
     Route::get('/user', 'ApiController@user');
     Route::get('/charts', 'ApiController@charts');
+    Route::post('/search', 'ApiController@search');
 
 
 
