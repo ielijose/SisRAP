@@ -179,5 +179,58 @@ class ApiController extends BaseController {
 
 	}
 
+	/* MATRIMONIO */
+	/* ********************************************************************************************************************** */
+	public function getMatrimonios()
+	{
+		$matrimonios = Matrimonio::all();
+		return $matrimonios->toJson();
+	}
+
+	public function postMatrimonio()
+	{
+		$inputs = Input::all();
+
+		$matrimonio = new Matrimonio($inputs);
+
+		if($matrimonio->save()){
+			$matrimonio->error = false;
+			return $matrimonio->toJson();
+		}else{
+			return json_encode(array('error' => true));
+		}
+
+	}
+
+
+	public function getMatrimonio($id)
+	{
+		$matrimonio = Matrimonio::find($id);
+		if($matrimonio){
+			$matrimonio->error = false;
+			return $matrimonio->toJson();
+		}
+
+		return json_encode(['error' => true, 'message' => 'No existe este Matrimonio.']);
+	}
+
+	public function putMatrimonio($id)
+	{
+		$inputs = Input::all();
+		//dd($inputs);
+
+		$matrimonio = Matrimonio::find($id);
+		$matrimonio->fill($inputs);
+		//$matrimonio->fecha = date('d/m/Y', strtotime($inputs['fecha']));
+
+		if($matrimonio->save()){
+			$matrimonio->error = false;
+			return $matrimonio->toJson();
+		}else{
+			return json_encode(array('error' => true));
+		}
+
+	}
+
 
 }

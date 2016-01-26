@@ -1,12 +1,12 @@
 <?php
 
-class Indicador extends Eloquent {
+class Defuncion extends Eloquent {
 
-    protected $table = 'indicadores';
+    protected $table = 'defunciones';
     public $timestamps = true;
     protected $guarded = array();
 
-    //protected $fillable = array('nombre');
+    protected $fillable = array('libro', 'folio', 'numero', 'difunto', 'difunto_edad', 'padre', 'madre', 'nacido', 'estado', 'fecha_sepultura', 'ministro');
 
     /* Functions */
 
@@ -24,12 +24,6 @@ class Indicador extends Eloquent {
 
     /* Scopes */
 
-    public function scopeByKey($query, $key){
-        return $query->where('key', $key);
-    }
-
     /* Relationships */
-
-
 
 }

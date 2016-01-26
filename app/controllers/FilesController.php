@@ -60,4 +60,21 @@ class FilesController extends BaseController {
         return PDF::load($html, 'A4', 'portrait')->show();
     }
 
+    public function acta_matrimonio()
+    {
+        $data = Input::all();
+
+        $matrimonio = Matrimonio::find(Input::get('id'));
+        if(!$matrimonio){
+            return Redirect::to('/?no_existe_el_matrimonio=1');
+        }
+
+        $matrimonio->fines = Input::get('fines');
+        $matrimonio->nota_marginal = Input::get('nota_marginal');
+        $matrimonio->observaciones = Input::get('observaciones');
+
+        //dd($bautizo->toArray());
+        return View::make('files.matrimonio', compact('matrimonio'));
+    }
+
 }

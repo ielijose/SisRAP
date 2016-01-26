@@ -227,6 +227,55 @@ angular
         }
       })
 
+      /* MATRIMONIOS */
+      .state('dashboard.matrimonios',{
+        url:'/matrimonios',
+        controller: 'MatrimoniosController',
+        templateUrl:'/app/views/matrimonios/index.html',
+        resolve: {
+          loadMyFiles:function($ocLazyLoad) {
+            return $ocLazyLoad.load({name:'sbAdminApp', files:['/app/scripts/controllers/matrimonios.js'] })
+          }
+        }
+      })
+
+      .state('dashboard.matrimonio-nuevo',{
+        url:'/matrimonios/nuevo',
+        controller: 'NuevoMatrimonioController',
+        templateUrl:'/app/views/matrimonios/nuevo.html',
+        resolve: {
+          loadMyFiles:function($ocLazyLoad) {
+            return $ocLazyLoad.load({name:'sbAdminApp', files:['/app/scripts/controllers/matrimonios.js'] })
+          }
+        }
+      })
+
+      .state('dashboard.matrimonio',{
+        url:'/matrimonio/:id',
+        controller: 'MostrarMatrimonioController',
+        templateUrl:'/app/views/matrimonios/mostrar.html',
+        resolve: {
+          loadMyFiles:function($ocLazyLoad) {
+            return $ocLazyLoad.load({name:'sbAdminApp', files:['/app/scripts/controllers/matrimonios.js'] })
+          }
+        }
+      })
+
+      .state('dashboard.matrimonio-imprimir',{
+        url:'/matrimonio-imprimir/:id',
+        controller: 'ImprimirMatrimonioController',
+        templateUrl:'/app/views/matrimonios/imprimir.html',
+        resolve: {
+          loadMyFiles:function($ocLazyLoad) {
+            return $ocLazyLoad.load({name:'sbAdminApp', files:['/app/scripts/controllers/matrimonios.js'] })
+          }
+        }
+      })
+
+
+
+
+
 
 
   }]).config(function(toastrConfig) {

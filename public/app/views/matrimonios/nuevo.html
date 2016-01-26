@@ -1,0 +1,139 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">
+            Nuevo Matrimonio
+            <div class="pull-right">
+                <a ui-sref="dashboard.matrimonios" class="btn btn-info"> <i class="fa fa-arrow-left"></i> Volver</a>
+            </div>
+        </h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-red">
+            <div class="panel-heading">
+                Registrar Matrimonio
+            </div>
+            <div class="panel-body">
+                <form role="form" ng-submit="guardar()" anovalidate>
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <h3>Datos del Libro</h3>
+
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Libro" name="libro" ng-model="matrimonio.libro" required>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Folio" name="folio" ng-model="matrimonio.folio" required>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Numero" name="numero" ng-model="matrimonio.numero" required>
+                            </div>
+                        </div>
+                        <!-- /.col-lg-4 (nested) -->
+                        <div class="col-lg-3">
+                            <h3>Datos del Esposo </h3>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Nombre" name="esposo" ng-model="matrimonio.esposo" required>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Padre" name="esposo_padre" ng-model="matrimonio.esposo_padre" required>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Madre" name="esposo_madre" ng-model="matrimonio.esposo_madre" required>
+                            </div>
+
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Filiación" name="esposo_filiacion" ng-model="matrimonio.esposo_filiacion" required>
+                            </div>
+
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Lugar de nacimiento" name="esposo_nacido" ng-model="matrimonio.esposo_nacido" required>
+                            </div>
+
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Estado" name="esposo_estado" ng-model="matrimonio.esposo_estado" required>
+                            </div>
+
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Edad" name="esposo_edad" ng-model="matrimonio.esposo_edad" required>
+                            </div>
+
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Bautizado en" name="esposo_bautizado" ng-model="matrimonio.esposo_bautizado" required>
+                            </div>
+                        </div>
+                        <!-- /.col-lg-4 (nested) -->
+
+                         <div class="col-lg-3">
+                            <h3>Datos de la Esposa</h3>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Nombre" name="esposa" ng-model="matrimonio.esposa" required>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Padre" name="esposa_padre" ng-model="matrimonio.esposa_padre" required>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Madre" name="esposa_madre" ng-model="matrimonio.esposa_madre" required>
+                            </div>
+
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Filiación" name="esposa_filiacion" ng-model="matrimonio.esposa_filiacion" required>
+                            </div>
+
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Lugar de nacimiento" name="esposa_nacido" ng-model="matrimonio.esposa_nacido" required>
+                            </div>
+
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Estado" name="esposa_estado" ng-model="matrimonio.esposa_estado" required>
+                            </div>
+
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Edad" name="esposa_edad" ng-model="matrimonio.esposa_edad" required>
+                            </div>
+
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Bautizado en" name="esposa_bautizado" ng-model="matrimonio.esposa_bautizado" required>
+                            </div>
+                        </div>
+                        <!-- /.col-lg-4 (nested) -->
+
+                        <div class="col-lg-3">
+                            <h3>Datos del Matrimonio </h3>
+
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Fecha del matrimonio" name="fecha_matrimonio" ng-model="matrimonio.fecha_matrimonio">
+                            </div>
+
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Testigo 1" name="testigo" ng-model="matrimonio.testigo">
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Testigo 2" name="testigo2" ng-model="matrimonio.testigo2">
+                            </div>
+
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Ministro" name="ministro" ng-model="matrimonio.ministro">
+                            </div>
+
+                        </div>
+                        <!-- /.col-lg-4 (nested) -->
+
+                    </div>
+
+                    <button type="submit" class="btn btn-success btn-lg pull-right"> <i class="fa fa-save"></i> Guardar</button>
+                    <div class="clearfix"></div>
+
+                    <!-- /.row (nested) -->
+                </form>
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+    </div>
+    <!-- /.col-lg-12 -->
+</div>

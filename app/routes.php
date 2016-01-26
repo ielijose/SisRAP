@@ -24,3 +24,5 @@ require "routes/api.php";
 Route::any('/files/generate/bautizo', array('before' => 'auth', 'uses' => 'FilesController@acta_bautizo'));
 Route::any('/files/generate/comunion', array('before' => 'auth', 'uses' => 'FilesController@acta_comunion'));
 Route::any('/files/generate/confirmacion', array('before' => 'auth', 'uses' => 'FilesController@acta_confirmacion'));
+Route::any('/files/generate/matrimonio', array('before' => 'auth', 'uses' => 'FilesController@acta_matrimonio'));
+Route::any('/files/generate/defuncion', array('before' => 'auth', 'uses' => 'FilesController@acta_defuncion'));
