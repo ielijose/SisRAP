@@ -32,9 +32,9 @@
         Quien suscribe, <strong>Pbro. Lcdo. Jorge Luis Ramírez Rivera</strong>, Párroco de la Iglesia  Ntra. Sra. Del Rosario de Aránzazu, hago constar que en nuestro archivo parroquial se encuentra insertado el Matrimonio Eclesiástico:
 
         <br>
-        Libro N°: <strong>{{ $matrimonio->libro }}</strong>   Folio: <strong>{{ $matrimonio->folio }}</strong>      Numeral: <strong>{{ $matrimonio->numero }}</strong>   Filiación: <strong>{{ $matrimonio->filiacion }}</strong>
+        <strong>Libro N°:</strong> {{ $matrimonio->libro }},  <strong>Folio:</strong> {{ $matrimonio->folio }},   <strong>Numeral:</strong> {{ $matrimonio->numero }}
 
-        <br><br>
+        <br>
 
         <strong>De:</strong> {{ $matrimonio->esposo }}
         <br><strong>Hijo de:</strong> {{ $matrimonio->esposo_padre }} y {{ $matrimonio->esposo_madre }}   <strong>Filiación</strong>: {{ $matrimonio->esposo_filiacion }}
@@ -46,7 +46,7 @@
         <br><strong>Nació en:</strong> {{ $matrimonio->esposa_nacido }}  <strong>Estado</strong>: {{ $matrimonio->esposa_estado }}  <strong>Edad</strong>: {{ $matrimonio->esposa_edad }}
         <br><strong>Bautizado en:</strong> {{ $matrimonio->esposa_bautizado }}
 
-        <br><br>
+        <br>
         <strong>Santa Rita Fecha: </strong> {{ $matrimonio->fecha_matrimonio }}. Parroquia Nuestra Señora del Rosario de Aránzazu
         <br><br><strong>Testigos:</strong> {{ $matrimonio->testigo }} y {{ $matrimonio->testigo2 }}
         <br><strong>Ministro:</strong> {{ $matrimonio->ministro }}
@@ -57,14 +57,8 @@
     </p>
 
     <br>
-    <br>
     <p align="right"> <strong>Santa Rita, {{ date('d') }} / {{ date('m') }} / {{ date('Y') }}</strong> </p>
 
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
     <br>
 
 

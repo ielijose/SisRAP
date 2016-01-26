@@ -77,4 +77,24 @@ class FilesController extends BaseController {
         return View::make('files.matrimonio', compact('matrimonio'));
     }
 
+    public function acta_defuncion()
+    {
+        $data = Input::all();
+
+        $defuncion = Defuncion::find(Input::get('id'));
+        if(!$defuncion){
+            return Redirect::to('/?no_existe_la_defuncion=1');
+        }
+
+        $defuncion->fines = Input::get('fines');
+        $defuncion->nota_marginal = Input::get('nota_marginal');
+        $defuncion->observaciones = Input::get('observaciones');
+
+        if($defuncion->observaciones == '')
+            $defuncion->observaciones = 'Sin Observaciones';
+
+        //dd($bautizo->toArray());
+        return View::make('files.defuncion', compact('defuncion'));
+    }
+
 }

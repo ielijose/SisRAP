@@ -34,5 +34,12 @@ Route::group(array('prefix' => 'api'), function()
     Route::post('/matrimonio', 'ApiController@postMatrimonio');
     Route::get('/matrimonio/{id}', 'ApiController@getMatrimonio');
     Route::post('/matrimonio/{id}', 'ApiController@putMatrimonio');
+
+    /* DEFUNCIONES */
+    /* ********************************************************************************************************************** */
+    Route::get('/defunciones', 'ApiController@getDefunciones');
+    Route::post('/defuncion', 'ApiController@postDefuncion');
+    Route::get('/defuncion/{id}', 'ApiController@getDefuncion');
+    Route::post('/defuncion/{id}', 'ApiController@putDefuncion');
 });
 

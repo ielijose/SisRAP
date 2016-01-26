@@ -272,6 +272,51 @@ angular
         }
       })
 
+      /* DEFUNCIONES */
+      .state('dashboard.defunciones',{
+        url:'/defunciones',
+        controller: 'DefuncionesController',
+        templateUrl:'/app/views/defunciones/index.html',
+        resolve: {
+          loadMyFiles:function($ocLazyLoad) {
+            return $ocLazyLoad.load({name:'sbAdminApp', files:['/app/scripts/controllers/defunciones.js'] })
+          }
+        }
+      })
+
+      .state('dashboard.defuncion-nuevo',{
+        url:'/defunciones/nuevo',
+        controller: 'NuevaDefuncionController',
+        templateUrl:'/app/views/defunciones/nuevo.html',
+        resolve: {
+          loadMyFiles:function($ocLazyLoad) {
+            return $ocLazyLoad.load({name:'sbAdminApp', files:['/app/scripts/controllers/defunciones.js'] })
+          }
+        }
+      })
+
+      .state('dashboard.defuncion',{
+        url:'/defunciones/:id',
+        controller: 'MostrarDefuncionController',
+        templateUrl:'/app/views/defunciones/mostrar.html',
+        resolve: {
+          loadMyFiles:function($ocLazyLoad) {
+            return $ocLazyLoad.load({name:'sbAdminApp', files:['/app/scripts/controllers/defunciones.js'] })
+          }
+        }
+      })
+
+      .state('dashboard.defuncion-imprimir',{
+        url:'/defuncion-imprimir/:id',
+        controller: 'ImprimirDefuncionController',
+        templateUrl:'/app/views/defunciones/imprimir.html',
+        resolve: {
+          loadMyFiles:function($ocLazyLoad) {
+            return $ocLazyLoad.load({name:'sbAdminApp', files:['/app/scripts/controllers/defunciones.js'] })
+          }
+        }
+      })
+
 
 
 

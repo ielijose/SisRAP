@@ -1,0 +1,83 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">
+            Bautizo: {{ bautizo.persona }}
+            <div class="pull-right">
+                <a ui-sref="dashboard.defunciones" class="btn btn-info"> <i class="fa fa-arrow-left"></i> Volver</a>
+            </div>
+        </h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Modificar Defunción
+            </div>
+            <div class="panel-body">
+                <form role="form" ng-submit="guardar()" anovalidate>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <h3>Datos del Libro</h3>
+
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Libro" name="libro" ng-model="defuncion.libro" required>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Folio" name="folio" ng-model="defuncion.folio" required>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Numero" name="numero" ng-model="defuncion.numero" required>
+                            </div>
+                        </div>
+                        <!-- /.col-lg-4 (nested) -->
+                        <div class="col-lg-4">
+                            <h3>Datos del Difunto </h3>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Nombre" name="difunto" ng-model="defuncion.difunto" required>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Edad" name="difunto_edad" ng-model="defuncion.difunto_edad" required>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Padre" name="padre" ng-model="defuncion.padre" required>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Madre" name="madre" ng-model="defuncion.madre" required>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Lugar de nacimiento" name="nacido" ng-model="defuncion.nacido" required>
+                            </div>
+                        </div>
+                        <!-- /.col-lg-4 (nested) -->
+
+                        <div class="col-lg-4">
+                            <h3>Otros </h3>
+
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Fecha de sepultura" name="fecha_sepultura" ng-model="defuncion.fecha_sepultura">
+                            </div>
+
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Ministro" name="ministro" ng-model="defuncion.ministro">
+                            </div>
+
+                        </div>
+                        <!-- /.col-lg-4 (nested) -->
+                    </div>
+
+                    <button type="submit" class="btn btn-success btn-lg pull-right"> <i class="fa fa-save"></i> Guardar</button>
+                    <div class="clearfix"></div>
+
+                    <!-- /.row (nested) -->
+                </form>
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+    </div>
+    <!-- /.col-lg-12 -->
+</div>

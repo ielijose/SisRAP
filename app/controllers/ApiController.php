@@ -12,11 +12,16 @@ class ApiController extends BaseController {
 		$bautizos = Bautizo::count();
 		$comuniones = Comunion::count();
 		$confirmaciones = Confirmacion::count();
+		$matrimonios = Matrimonio::count();
+		$defunciones = Defuncion::count();
+
 
 		return json_encode([
 			'bautizos' => $bautizos,
 			'comuniones' => $comuniones,
 			'confirmaciones' => $confirmaciones,
+			'matrimonios' => $matrimonios,
+			'defunciones' => $defunciones,
 		]);
 	}
 
@@ -31,7 +36,6 @@ class ApiController extends BaseController {
 	public function postBautizo()
 	{
 		$inputs = Input::all();
-
 		$bautizo = new Bautizo($inputs);
 
 		if($bautizo->save()){
@@ -40,9 +44,7 @@ class ApiController extends BaseController {
 		}else{
 			return json_encode(array('error' => true));
 		}
-
 	}
-
 
 	public function getBautizo($id)
 	{
@@ -51,7 +53,6 @@ class ApiController extends BaseController {
 			$bautizo->error = false;
 			return $bautizo->toJson();
 		}
-
 		return json_encode(['error' => true, 'message' => 'No existe este bautizo.']);
 	}
 
@@ -84,7 +85,6 @@ class ApiController extends BaseController {
 	public function postComunion()
 	{
 		$inputs = Input::all();
-
 		$comunion = new Comunion($inputs);
 
 		if($comunion->save()){
@@ -93,7 +93,6 @@ class ApiController extends BaseController {
 		}else{
 			return json_encode(array('error' => true));
 		}
-
 	}
 
 
@@ -104,14 +103,12 @@ class ApiController extends BaseController {
 			$comunion->error = false;
 			return $comunion->toJson();
 		}
-
 		return json_encode(['error' => true, 'message' => 'No existe esta Comunión.']);
 	}
 
 	public function putComunion($id)
 	{
 		$inputs = Input::all();
-		//dd($inputs);
 
 		$comunion = Comunion::find($id);
 		$comunion->fill($inputs);
@@ -123,10 +120,9 @@ class ApiController extends BaseController {
 		}else{
 			return json_encode(array('error' => true));
 		}
-
 	}
 
-	/* COMUNIONES */
+	/* CONFIRMACIONES */
 	/* ********************************************************************************************************************** */
 	public function getConfirmaciones()
 	{
@@ -137,16 +133,14 @@ class ApiController extends BaseController {
 	public function postConfirmacion()
 	{
 		$inputs = Input::all();
+		$confirmacion = new Confirmacion($inputs);
 
-		$comunion = new Confirmacion($inputs);
-
-		if($comunion->save()){
-			$comunion->error = false;
-			return $comunion->toJson();
+		if($confirmacion->save()){
+			$confirmacion->error = false;
+			return $confirmacion->toJson();
 		}else{
 			return json_encode(array('error' => true));
 		}
-
 	}
 
 
@@ -157,14 +151,12 @@ class ApiController extends BaseController {
 			$confirmacion->error = false;
 			return $confirmacion->toJson();
 		}
-
 		return json_encode(['error' => true, 'message' => 'No existe esta Confirmación.']);
 	}
 
 	public function putConfirmacion($id)
 	{
 		$inputs = Input::all();
-		//dd($inputs);
 
 		$comunion = Confirmacion::find($id);
 		$comunion->fill($inputs);
@@ -176,10 +168,9 @@ class ApiController extends BaseController {
 		}else{
 			return json_encode(array('error' => true));
 		}
-
 	}
 
-	/* MATRIMONIO */
+	/* MATRIMONIOS */
 	/* ********************************************************************************************************************** */
 	public function getMatrimonios()
 	{
@@ -190,7 +181,6 @@ class ApiController extends BaseController {
 	public function postMatrimonio()
 	{
 		$inputs = Input::all();
-
 		$matrimonio = new Matrimonio($inputs);
 
 		if($matrimonio->save()){
@@ -199,9 +189,7 @@ class ApiController extends BaseController {
 		}else{
 			return json_encode(array('error' => true));
 		}
-
 	}
-
 
 	public function getMatrimonio($id)
 	{
@@ -210,14 +198,12 @@ class ApiController extends BaseController {
 			$matrimonio->error = false;
 			return $matrimonio->toJson();
 		}
-
 		return json_encode(['error' => true, 'message' => 'No existe este Matrimonio.']);
 	}
 
 	public function putMatrimonio($id)
 	{
 		$inputs = Input::all();
-		//dd($inputs);
 
 		$matrimonio = Matrimonio::find($id);
 		$matrimonio->fill($inputs);
@@ -229,8 +215,53 @@ class ApiController extends BaseController {
 		}else{
 			return json_encode(array('error' => true));
 		}
-
 	}
 
+	/* DEFUNCIONES */
+	/* ********************************************************************************************************************** */
+	public function getDefunciones()
+	{
+		$defunciones = Defuncion::all();
+		return $defunciones->toJson();
+	}
+
+	public function postDefuncion()
+	{
+		$inputs = Input::all();
+		$defuncion = new Defuncion($inputs);
+
+		if($defuncion->save()){
+			$defuncion->error = false;
+			return $defuncion->toJson();
+		}else{
+			return json_encode(array('error' => true));
+		}
+	}
+
+	public function getDefuncion($id)
+	{
+		$defuncion = Defuncion::find($id);
+		if($defuncion){
+			$defuncion->error = false;
+			return $defuncion->toJson();
+		}
+		return json_encode(['error' => true, 'message' => 'No existe esta Defuncion.']);
+	}
+
+	public function putDefuncion($id)
+	{
+		$inputs = Input::all();
+
+		$defuncion = Defuncion::find($id);
+		$defuncion->fill($inputs);
+		//$defuncion->fecha = date('d/m/Y', strtotime($inputs['fecha']));
+
+		if($defuncion->save()){
+			$defuncion->error = false;
+			return $defuncion->toJson();
+		}else{
+			return json_encode(array('error' => true));
+		}
+	}
 
 }
